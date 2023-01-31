@@ -1,0 +1,41 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width">
+</head>
+	
+<script>
+    function SendMessage( msg )
+	{
+		var httpRequest = new XMLHttpRequest();
+		httpRequest.onreadystatechange = function() { HandleReply(httpRequest); };  
+		httpRequest.open("GET", "/message?msg=" + msg, true);
+		httpRequest.send(null);
+	}
+
+	function HandleReply( httpRequest )
+	{
+		if( httpRequest.readyState==4 ) 
+		{
+			if( httpRequest.status==200 ) alert("thank yoy for support");
+		}
+	}
+</script>
+
+<style>
+	body { background-color: #ffffff; }
+    .hello 
+    { 
+        font-size: 42; 
+        width: 100%;
+        margin-top: 2em;
+        text-align: center;
+        color: blue;
+    }
+</style>
+
+<body onload="app.Start()">
+
+	<div class=hello> Hello World! </div>
+	<input type=button onclick="SendMessage('support' )" value="support">
+</body>
+</html>
